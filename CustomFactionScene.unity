@@ -157,9 +157,7 @@ MonoBehaviour:
     FactionToOverride: 2
     UIOverride:
       customNameToUse: Rheinbund
-      customNameAdjective: Rheinbund
-      endOfRoundScreenImage: {fileID: 21300000, guid: 64b348e53a200c149a1c9847c8ac9411,
-        type: 3}
+      customNameAdjective: Rhein
       factionCrest: {fileID: 21300000, guid: f9e4f9743909d394eade9055e7145eb0, type: 3}
       factionEmblem: {fileID: 21300000, guid: f55f6447775e74544ac94a3454748cce, type: 3}
       factionBackgroundSelection: {fileID: 21300000, guid: ebbad5667cc254c45ac886dee7d15c5b,

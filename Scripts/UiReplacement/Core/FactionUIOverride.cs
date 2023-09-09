@@ -10,10 +10,7 @@ namespace BaseCustomFactions.Core
         [Tooltip("This is the name used when describing the faction. For example the 'British' are victorious, not the 'Britain' are victorious")] 
         public string customNameAdjective;
 
-
         //New update
-        [Tooltip("Background flag used for end of round. Fluttering flag")]
-        public Sprite endOfRoundScreenImage;
         [Tooltip("Crest used for the faction")]
         public Sprite factionCrest;
         [Tooltip("Emblem used for the faction. This is crest + flag + name used for seleciton and scoreboard")]

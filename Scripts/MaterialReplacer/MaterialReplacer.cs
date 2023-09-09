@@ -17,7 +17,7 @@ namespace BaseCustomFactions.Scripts.MaterialReplacer
         public void Start()
         {
             _meshRenderer = GetComponent<MeshRenderer>();
-            Logger.LogInformation($"Swap status is: {Swap()}");
+            Logger.Debug($"Swap status is: {Swap()}");
         }
 
         private void Update()
