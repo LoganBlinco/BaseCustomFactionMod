@@ -5,7 +5,7 @@ namespace BaseCustomFactions.Scripts.MaterialReplacer
 {
     public class MaterialReplacer : MonoBehaviour
     {
-        private readonly ILog Logger = LogFactory.GetLogger(typeof(MaterialReplacer), LogLevelsEnum.All);
+        private readonly ILog _logger = LogFactory.GetLogger(typeof(MaterialReplacer), LogLevelsEnum.All);
         
         public bool shouldInUpdate = false;
 
@@ -17,7 +17,7 @@ namespace BaseCustomFactions.Scripts.MaterialReplacer
         public void Start()
         {
             _meshRenderer = GetComponent<MeshRenderer>();
-            Logger.Debug($"Swap status is: {Swap()}");
+            _logger.Debug($"Swap status is: {Swap()}");
         }
 
         private void Update()
