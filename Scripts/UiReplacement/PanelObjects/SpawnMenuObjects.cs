@@ -54,13 +54,13 @@ namespace Assets.BaseCustomFactionMod.Scripts.UiReplacement.PanelObjects
 			FactionCountry factionCountry = GetFactionFromString.GetFactionBasedOnContainingName(image_factionEmblem.sprite.name);
 			if (factionCountry == _attackingFaction && _attackerOverride != null)
 			{
-				image_factionEmblem.overrideSprite = _attackerOverride.selectClassHeaderEmblem;
+				image_factionEmblem.overrideSprite = _attackerOverride.factionCrest;
 				text_factionName.text = $"{_attackerOverride.customNameToUse}";
 				ApplyFlagChange(factionCountry, _attackerOverride.flagReplacementImage);
 			}
 			else if (factionCountry == _defendingFaction && _defenderOverride != null)
 			{
-				image_factionEmblem.overrideSprite = _defenderOverride.selectClassHeaderEmblem;
+				image_factionEmblem.overrideSprite = _defenderOverride.factionCrest;
 				text_factionName.text = $"{_defenderOverride.customNameToUse}";
 				ApplyFlagChange(factionCountry, _defenderOverride.flagReplacementImage);
 			}

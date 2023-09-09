@@ -2,6 +2,7 @@
 using Assets.BaseCustomFactionMod.Scripts.UiReplacement.PanelObjects;
 using HoldfastSharedMethods;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace BaseCustomFactions.Core
 {
@@ -42,15 +43,20 @@ namespace BaseCustomFactions.Core
         
         public void ReplaceFactionPanel()
         {
-            Sprite attackerFactionSprite = _attackerSettings != null ? _attackerSettings.factionSelectionSprite : null;
-            Sprite attackerFactionDisabledSprite = _attackerSettings != null ? _attackerSettings.factionSelectionDisabledSprite : null;
-            Sprite defenderFactionSprite = _defenderSettings != null ? _defenderSettings.factionSelectionSprite : null;
-            Sprite defenderFactionDisabledSprite = _defenderSettings != null ? _defenderSettings.factionSelectionDisabledSprite : null;
+            Sprite attackerFactionSprite = _attackerSettings != null ? _attackerSettings.factionEmblem : null;
+            Sprite attackerFactionDisabledSprite = _attackerSettings != null ? _attackerSettings.factionEmblem : null;
+            Sprite defenderFactionSprite = _defenderSettings != null ? _defenderSettings.factionEmblem : null;
+            Sprite defenderFactionDisabledSprite = _defenderSettings != null ? _defenderSettings.factionEmblem : null;
 
-            SpawnFactionObjects?.Replace(attackerFactionSprite, attackerFactionDisabledSprite, defenderFactionSprite, defenderFactionDisabledSprite);
+            Sprite attackerFactionBcakground = _attackerSettings != null ? _attackerSettings.factionBackgroundSelection : null;
+            Sprite defenderFactionBcackground = _defenderSettings != null ? _defenderSettings.factionBackgroundSelection : null;
+
+            SpawnFactionObjects?.Replace(attackerFactionSprite, attackerFactionDisabledSprite, 
+                defenderFactionSprite, defenderFactionDisabledSprite,
+                attackerFactionBcakground, defenderFactionBcackground);
             
-            Sprite attackersEmblem = _attackerSettings != null ? _attackerSettings.selectClassHeaderEmblem : null;
-            Sprite defendersEmblem = _defenderSettings != null ? _defenderSettings.selectClassHeaderEmblem : null;
+            Sprite attackersEmblem = _attackerSettings != null ? _attackerSettings.factionCrest : null;
+            Sprite defendersEmblem = _defenderSettings != null ? _defenderSettings.factionCrest : null;
 
 
 
@@ -59,15 +65,15 @@ namespace BaseCustomFactions.Core
         }
         public void ReplaceTopBar()
         {
-            Sprite attackerTopSprite = _attackerSettings != null ? _attackerSettings.topBarSprite : null;
-            Sprite defenderTopSprite = _defenderSettings != null ? _defenderSettings.topBarSprite : null;
+            Sprite attackerTopSprite = _attackerSettings != null ? _attackerSettings.factionTopImage : null;
+            Sprite defenderTopSprite = _defenderSettings != null ? _defenderSettings.factionTopImage : null;
             TopBarObjects?.Replace(attackerTopSprite, defenderTopSprite);
         }
 
         public void ReplaceScoreBoard()
         {
-            Sprite attackerScoreboardSprite = _attackerSettings != null ? _attackerSettings.scoreboardSprite : null;
-            Sprite defenderScoreboardSprite = _defenderSettings != null ? _defenderSettings.scoreboardSprite : null;
+            Sprite attackerScoreboardSprite = _attackerSettings != null ? _attackerSettings.factionEmblem : null;
+            Sprite defenderScoreboardSprite = _defenderSettings != null ? _defenderSettings.factionEmblem : null;
 
             ScoreBoardObjects?.Replace(attackerScoreboardSprite, defenderScoreboardSprite);
         }
@@ -78,21 +84,30 @@ namespace BaseCustomFactions.Core
             if (winningFaction == AttackingFaction)
             {
                 FactionUIOverride loserFaction = _customFactionSettingsManager.GetSettingsOrNull(DefendingFaction);
-                roundEndReason = $"The {loserFaction.customNameAdjective} troops in the battlefield have been eliminated.";
+				if (loserFaction != null)
+				    roundEndReason = $"The {loserFaction.customNameAdjective} troops in the battlefield have been eliminated.";
             }
             else if (winningFaction == DefendingFaction)
             {
                 FactionUIOverride loserFaction = _customFactionSettingsManager.GetSettingsOrNull(AttackingFaction);
-                roundEndReason = $"The {loserFaction.customNameAdjective} troops in the battlefield have been eliminated.";
+                if (loserFaction != null) 
+                    roundEndReason = $"The {loserFaction.customNameAdjective} troops in the battlefield have been eliminated.";
             }
             _roundEndObjects = CreatePanelReplacementFactory.CreateRoundEndPanelSettings(uiRepositry);
             FactionUIOverride settings = _customFactionSettingsManager.GetSettingsOrNull(winningFaction);
-            _roundEndObjects.ReplaceRoundEndPopup(settings.factionSelectionSprite, settings.customNameAdjective, roundEndReason);
+            if (settings == null) { return; }
+            _roundEndObjects.ReplaceRoundEndPopup(settings.factionEmblem, settings.customNameAdjective, roundEndReason);
 
-            _roundEndObjects.ReplaceRoundEndPanel(_attackerSettings.squareRoundEndBoardSprite, _attackerSettings.scoreboardSprite, _attackerSettings.customNameToUse,
-                _defenderSettings.squareRoundEndBoardSprite, _defenderSettings.scoreboardSprite, _defenderSettings.customNameToUse);
-            
+            Sprite attackerEndOfRoundImage = _attackerSettings != null ? _attackerSettings.factionCrest : null;
+            Sprite attackerBackground = _attackerSettings != null ? _attackerSettings.factionBackgroundSelection : null;
+            string attackerCustomName = _attackerSettings != null ? _attackerSettings.customNameToUse : string.Empty;
 
+            Sprite defenderEndOfRoundImage = _defenderSettings != null ? _defenderSettings.factionCrest : null;
+            Sprite defenderBackground = _defenderSettings != null ? _defenderSettings.factionBackgroundSelection : null;
+            string defenderCustomName = _defenderSettings != null ? _defenderSettings.customNameToUse : string.Empty;
+
+			_roundEndObjects.ReplaceRoundEndPanel(attackerEndOfRoundImage, attackerBackground, attackerCustomName,
+                defenderEndOfRoundImage, defenderBackground, defenderCustomName);
         }
 
         public void MapVoting()
@@ -110,13 +125,13 @@ namespace BaseCustomFactions.Core
             
             if (factionCountry == AttackingFaction)
             {
-                playersSprite = _attackerSettings != null ? _attackerSettings.topBarSprite : null;
-                otherSprite = _defenderSettings != null ? _defenderSettings.topBarSprite : null;
+                playersSprite = _attackerSettings != null ? _attackerSettings.factionTopImage : null;
+                otherSprite = _defenderSettings != null ? _defenderSettings.factionTopImage : null;
             }
             else if (factionCountry == DefendingFaction)
             {
-                playersSprite = _defenderSettings != null ? _defenderSettings.topBarSprite : null;
-                otherSprite = _attackerSettings != null ? _attackerSettings.topBarSprite : null;
+                playersSprite = _defenderSettings != null ? _defenderSettings.factionTopImage : null;
+                otherSprite = _attackerSettings != null ? _attackerSettings.factionTopImage : null;
             }
             TopBarObjects?.Replace(playersSprite, otherSprite);
         }

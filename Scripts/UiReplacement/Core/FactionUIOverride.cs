@@ -9,24 +9,24 @@ namespace BaseCustomFactions.Core
         public string customNameToUse;
         [Tooltip("This is the name used when describing the faction. For example the 'British' are victorious, not the 'Britain' are victorious")] 
         public string customNameAdjective;
-        [Tooltip("Sprite used for the faction next to the ticket counter and round timer")]
-        public Sprite topBarSprite;
-        [Tooltip("Sprite used for the scoreboard")]
-        public Sprite scoreboardSprite;
-        [Tooltip("Sprite used for players who are spawned in -- top left where the ammo count is")]
-        public Sprite playerInfoIconSprite;
-        [Tooltip("Sprite used for the faction selection screen")]
-        public Sprite factionSelectionSprite;
-        [Tooltip("Sprite used for the faction selection screen when a faction cannot be joined (eg full)")]
-        public Sprite factionSelectionDisabledSprite;
-        [Tooltip("Sprite used for the round end sprite. This is the square one..")]
-        public Sprite squareRoundEndBoardSprite;
-        [Tooltip("Sprite used for the class selection header")]
-        public Sprite selectClassHeaderEmblem;
-        [Tooltip("Material used for the faction flag replacement")]
-        public Texture2D flagReplacementImage;
-        
-        [Tooltip("Sprite ")]
-        public Sprite mapVotingSprite;
-    }
+
+
+        //New update
+        [Tooltip("Background flag used for end of round. Fluttering flag")]
+        public Sprite endOfRoundScreenImage;
+        [Tooltip("Crest used for the faction")]
+        public Sprite factionCrest;
+        [Tooltip("Emblem used for the faction. This is crest + flag + name used for seleciton and scoreboard")]
+        public Sprite factionEmblem;
+        [Tooltip("Background for faction selection")]
+        public Sprite factionBackgroundSelection;
+        [Tooltip("Sprite used for round info bar (topbar)")]
+        public Sprite factionTopImage;
+        [Tooltip("Used for map voting")]
+        public Sprite factionMapVotingImage;
+
+		[Tooltip("Material used for the faction flag replacement")]
+		public Texture2D flagReplacementImage;
+
+	}
 }

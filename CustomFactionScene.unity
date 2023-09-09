@@ -153,50 +153,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customFactions:
-  - FactionIDName: United States
+  - FactionIDName: Rheinbund
     FactionToOverride: 2
     UIOverride:
-      customNameToUse: United States
-      customNameAdjective: Americans
-      topBarSprite: {fileID: 21300000, guid: 4fed67bba68667046bfdc4305b8c27be, type: 3}
-      scoreboardSprite: {fileID: 21300000, guid: 3f14684191c718f4681876e761da8a2b,
+      customNameToUse: Rheinbund
+      customNameAdjective: Rheinbund
+      endOfRoundScreenImage: {fileID: 21300000, guid: 64b348e53a200c149a1c9847c8ac9411,
         type: 3}
-      playerInfoIconSprite: {fileID: 21300000, guid: a34c39e5288161e46baf9f4df0d87ff0,
+      factionCrest: {fileID: 21300000, guid: f9e4f9743909d394eade9055e7145eb0, type: 3}
+      factionEmblem: {fileID: 21300000, guid: f55f6447775e74544ac94a3454748cce, type: 3}
+      factionBackgroundSelection: {fileID: 21300000, guid: ebbad5667cc254c45ac886dee7d15c5b,
         type: 3}
-      factionSelectionSprite: {fileID: 21300000, guid: 4b2a38ee54a2d724fa032000d63a36e8,
+      factionTopImage: {fileID: 21300000, guid: fd8b4097c2bd37046ab447d3636220d1,
         type: 3}
-      factionSelectionDisabledSprite: {fileID: 21300000, guid: 3aa67822157a62b46b464b3479fad36b,
+      factionMapVotingImage: {fileID: 21300000, guid: df49f5387e77bdb46aecb9021a6b3788,
         type: 3}
-      squareRoundEndBoardSprite: {fileID: 21300000, guid: bde2537a7e700e14bb7ca58cec7f8a7c,
-        type: 3}
-      selectClassHeaderEmblem: {fileID: 21300000, guid: bde2537a7e700e14bb7ca58cec7f8a7c,
-        type: 3}
-      flagReplacementImage: {fileID: 2800000, guid: fba3cc5582ef1704fb57400376aeb44f,
-        type: 3}
-      mapVotingSprite: {fileID: 21300000, guid: bde2537a7e700e14bb7ca58cec7f8a7c,
-        type: 3}
-    voiceLineSettings: []
-  - FactionIDName: Confederates
-    FactionToOverride: 1
-    UIOverride:
-      customNameToUse: Conferdetates
-      customNameAdjective: Rebels
-      topBarSprite: {fileID: 21300000, guid: 8ca43304543137b4ab98a99c2ac55b06, type: 3}
-      scoreboardSprite: {fileID: 21300000, guid: ac522d4e92bae254d8d665c5974c2698,
-        type: 3}
-      playerInfoIconSprite: {fileID: 21300000, guid: 797aa737e9a7f5845b3aaa79d37d0efd,
-        type: 3}
-      factionSelectionSprite: {fileID: 21300000, guid: fb2726a20f795f84e8816c52aa19359d,
-        type: 3}
-      factionSelectionDisabledSprite: {fileID: 21300000, guid: 0e2ceb1744279894a83b9709e44e35f5,
-        type: 3}
-      squareRoundEndBoardSprite: {fileID: 21300000, guid: 618b00ad71328c9409cdf0aa6d882c55,
-        type: 3}
-      selectClassHeaderEmblem: {fileID: 21300000, guid: 618b00ad71328c9409cdf0aa6d882c55,
-        type: 3}
-      flagReplacementImage: {fileID: 2800000, guid: fa6ecadeb04eacd47ae8dd4e8b04b1c1,
-        type: 3}
-      mapVotingSprite: {fileID: 21300000, guid: 618b00ad71328c9409cdf0aa6d882c55,
+      flagReplacementImage: {fileID: 2800000, guid: fd8b4097c2bd37046ab447d3636220d1,
         type: 3}
     voiceLineSettings: []
   globalSoundsToReplace: []

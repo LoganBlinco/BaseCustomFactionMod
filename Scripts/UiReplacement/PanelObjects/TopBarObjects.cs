@@ -21,22 +21,8 @@ namespace BaseCustomFactions
 
         public void Replace(Sprite attackerImage, Sprite defenderImage)
         {
-            if (attackerImage == null)
-            {
-                Logger.LogError($"{nameof(attackerImage)} is null");
-            }
-            else
-            {
-                _attackingImage.overrideSprite = attackerImage;
-            }
-            if (defenderImage == null)
-            {
-                Logger.LogError($"[{nameof(defenderImage)} is null");
-            }
-            else
-            {
-                _defendingImage.overrideSprite = defenderImage;
-            }
+			_attackingImage.overrideSprite = attackerImage;
+			_defendingImage.overrideSprite = defenderImage;
         }
 
         public void Destroy()

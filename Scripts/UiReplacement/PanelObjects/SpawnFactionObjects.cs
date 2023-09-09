@@ -44,7 +44,8 @@ namespace BaseCustomFactions
                        _defendersEmblemImage != null && _defendersEmblemImageDisabled != null;
         }
         
-        public void Replace(Sprite attackerImage, Sprite attackerImageDisabled, Sprite defenderImage, Sprite defenderImageDisabled)
+        public void Replace(Sprite attackerImage, Sprite attackerImageDisabled, Sprite defenderImage, Sprite defenderImageDisabled,
+            Sprite attackerBackground, Sprite defenderBackground)
         {
             if (!IsValid){return;}
             
@@ -60,11 +61,11 @@ namespace BaseCustomFactions
             }
             if (_attackerBackground != null)
             {
-                _attackerBackground.overrideSprite = attackerImage;
+                _attackerBackground.overrideSprite = attackerBackground;
             }
             if (_defenderBackground != null)
             {
-                _defenderBackground.overrideSprite = defenderImage;
+                _defenderBackground.overrideSprite = defenderBackground;
             }
         }
 

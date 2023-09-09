@@ -31,7 +31,7 @@ namespace BaseCustomFactions
             FactionUIOverride factionToUse = settingsManager.GetSettingsOrNull(factionToReplace);
             if (factionToUse != null)
             {
-                _attackingImage.overrideSprite = factionToUse.mapVotingSprite;
+                _attackingImage.overrideSprite = factionToUse.factionMapVotingImage;
             }
 
             string defendersName = _defendingImage.sprite.name;
@@ -40,7 +40,7 @@ namespace BaseCustomFactions
             factionToUse = settingsManager.GetSettingsOrNull(factionToReplace);
             if (factionToUse != null)
             {
-                _defendingImage.overrideSprite = factionToUse.mapVotingSprite;
+                _defendingImage.overrideSprite = factionToUse.factionMapVotingImage;
             }
 
         }
