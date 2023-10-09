@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using BaseCustomFactions.Core;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.BaseCustomFactionMod.Scripts.UiReplacement.GetUiElements
@@ -12,28 +13,27 @@ namespace Assets.BaseCustomFactionMod.Scripts.UiReplacement.GetUiElements
 			Image attackingImageBackground, 
 			Image defendingImageBackground) GetFactionSelectionImages(GameObject MainScreenPanels)
 		{
-			Transform spawnMenuPanel = MainScreenPanels.transform.GetChild(3);
-			Transform newFactionSelectionPanel = spawnMenuPanel.transform.GetChild(0);
+			Transform spawnMenuPanel = MainScreenPanels.transform.GetChildWithNameContains("Spawn Menu Panel");
+			Transform newFactionSelectionPanel = spawnMenuPanel.GetChildWithNameContains("New Faction Selection Panel");
 
-			Transform backgroundAttacking = newFactionSelectionPanel.transform.GetChild(2);
-			Transform backgroundDefending = newFactionSelectionPanel.transform.GetChild(3);
-
-
+			Transform backgroundAttacking = newFactionSelectionPanel.GetChildWithNameContains("Background Attacking Faction Overlay");
+			Transform backgroundDefending = newFactionSelectionPanel.GetChildWithNameContains("Background Defending Faction Overlay");
+			
 			//attacker faction
-			Transform attackingPanel = newFactionSelectionPanel.transform.GetChild(7);
-			Transform attackerMainContainer = attackingPanel.transform.GetChild(0);
-			Transform attackerEmblemImages = attackerMainContainer.GetChild(2);
+			Transform attackingPanel = newFactionSelectionPanel.GetChildWithNameContains("Attacking - Spawn Faction Panel");
+			Transform attackerMainContainer = attackingPanel.GetChildWithNameContains("Main Container");
+			Transform attackerEmblemImages = attackerMainContainer.GetChildWithNameContains("Emblem Images");
 
-			Transform attackerEmblemImageTransform = attackerEmblemImages.GetChild(1);
-			Transform attackerEmblemImageDisabledTransform = attackerEmblemImages.GetChild(0);
+			Transform attackerEmblemImageTransform = attackerEmblemImages.GetChildWithNameContains("Emblem Image");
+			Transform attackerEmblemImageDisabledTransform = attackerEmblemImages.GetChildWithNameContains("Grayscaled Image");
 
 			//defender faction
-			Transform defendingPanel = newFactionSelectionPanel.transform.GetChild(8);
-			Transform defendingMainContainer = defendingPanel.transform.GetChild(0);
-			Transform defendingEmblemImages = defendingMainContainer.GetChild(2);
+			Transform defendingPanel = newFactionSelectionPanel.GetChildWithNameContains("Defending - Spawn Faction Panel");
+			Transform defendingMainContainer = defendingPanel.GetChildWithNameContains("Main Container");
+			Transform defendingEmblemImages = defendingMainContainer.GetChildWithNameContains("Emblem Images");
 
-			Transform defendingEmblemImageTransform = defendingEmblemImages.GetChild(1);
-			Transform defendingEmblemImageDisabledTransform = defendingEmblemImages.GetChild(0);
+			Transform defendingEmblemImageTransform = defendingEmblemImages.GetChildWithNameContains("Emblem Image");
+			Transform defendingEmblemImageDisabledTransform = defendingEmblemImages.GetChildWithNameContains("Grayscaled Image");
 
 			Image attackerImage = attackerEmblemImageTransform.GetComponent<Image>();
 			Image attackerImageDisabled = attackerEmblemImageDisabledTransform.GetComponent<Image>();

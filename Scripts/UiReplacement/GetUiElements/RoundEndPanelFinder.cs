@@ -1,3 +1,4 @@
+using BaseCustomFactions.Core;
 using BaseCustomFactions.Scripts.Logging;
 using TMPro;
 using UnityEngine;
@@ -17,15 +18,14 @@ public static class RoundEndPanelFinder
 		ILog logger = LogFactory.GetLogger(typeof(RoundEndPanelFinder));
 
 
-		Transform endOfMatchPanel = MainCanvas.transform.GetChild(2);
+		Transform endOfMatchPanel = MainCanvas.transform.GetChild("End of Match Panel");
+		Transform endOfMatchFinalPanel = endOfMatchPanel.GetChild("End of Match Final Panel");
 
-		Transform endOfMatchFinalPanel = endOfMatchPanel.GetChild(0);
+		Transform verticalLayout = endOfMatchFinalPanel.GetChild("Vertical Layout");
+		Transform scoreContainer = verticalLayout.GetChild("Score Container");
 
-		Transform verticalLayout = endOfMatchFinalPanel.GetChild(4);
-		Transform scoreContainer = verticalLayout.GetChild(1);
-
-		Transform leftSide = scoreContainer.GetChild(0);
-		Transform rightSide = scoreContainer.GetChild(2);
+		Transform leftSide = scoreContainer.GetChild("Left Side");
+		Transform rightSide = scoreContainer.GetChild("Right Side");
 		logger.Debug($"left side of round end: {leftSide.name}");
 		logger.Debug($"right side of round end: {rightSide.name}");
 
@@ -42,11 +42,11 @@ public static class RoundEndPanelFinder
 
 	private static (Image backgroundImage, Image emblemImage, TextMeshProUGUI factionText) GetInfoFromSide(Transform leftSide)
 	{
-		Transform headerFactionContainer = leftSide.GetChild(0);
-		Transform emblemBackground = headerFactionContainer.GetChild(0);
+		Transform headerFactionContainer = leftSide.GetChild("Header Faction Container");
+		Transform emblemBackground = headerFactionContainer.GetChild("Emblem Background");
 
-		Transform emblem = headerFactionContainer.GetChild(3);
-		Transform factionTextTransform = headerFactionContainer.GetChild(5);
+		Transform emblem = headerFactionContainer.GetChild("Emblem");
+		Transform factionTextTransform = headerFactionContainer.GetChild("Faction Name");
 
 		Image attackingBackground =  emblemBackground.GetComponent<Image>();
 		Image attackingEmblem = emblem.GetComponent<Image>();
@@ -59,19 +59,19 @@ public static class RoundEndPanelFinder
 
 	public static (TextMeshProUGUI factionText, Image factionEmblem, TextMeshProUGUI roundEndReasonText) GetFactionWinPopup(GameObject MainCanvas)
 	{
-		Transform RoundEndPanel = MainCanvas.transform.GetChild(14);
-		Transform factionRoundWinnerPanel = RoundEndPanel.GetChild(0);
+		Transform RoundEndPanel = MainCanvas.transform.GetChild("Round End Panel");
+		Transform factionRoundWinnerPanel = RoundEndPanel.GetChild("Faction Round Winner Panel");
 
-		Transform factionWinningText = factionRoundWinnerPanel.GetChild(1);
-		Transform winningFactionEmblem = factionRoundWinnerPanel.GetChild(4);
+		Transform factionWinningText = factionRoundWinnerPanel.GetChild("Faction Winner Text");
+		Transform winningFactionEmblem = factionRoundWinnerPanel.GetChild("Winning Faction Emblem Image");
 
-		Transform verticalLayout = factionRoundWinnerPanel.GetChild(2);
-		Transform roundnEndReason = verticalLayout.GetChild(1);
+		Transform verticalLayout = factionRoundWinnerPanel.GetChild("Vertical Layout");
+		Transform roundEndReason = verticalLayout.GetChild("Round End Reason Text");
 
 
 		TextMeshProUGUI factionText = factionWinningText.GetComponent<TextMeshProUGUI>();
 		Image emblem = winningFactionEmblem.GetComponent<Image>();
-		TextMeshProUGUI roundEndReasonText = roundnEndReason.GetComponent<TextMeshProUGUI>();
+		TextMeshProUGUI roundEndReasonText = roundEndReason.GetComponent<TextMeshProUGUI>();
 
 		return (factionText, emblem, roundEndReasonText);
 	}
